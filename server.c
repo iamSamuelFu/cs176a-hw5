@@ -43,30 +43,38 @@ int main(int argc, char *argv[]) {
     int correctCheck[MAXGAMES];                 /* Check if guess is in game word */
     int correctCount[MAXGAMES];                 /* Number of correctly guessed letters */
 
-    int i, j;                                   /* Loop counters */
-    int g;                                      /* Game selector */
-    
-    char* words[15]; 
-    // int wordnum = 0;
-    // FILE * input = fopen("hangman_words.txt", "r");
-    // while(fscanf(input, "%s", words[wordnum]) == 1) {
-    //     if(wordnum == 15){
-    //         break;
-    //     }
-    //     wordnum++;
-    //     printf("%s\n", words[wordnum]);
-    // }
-    // fclose (input);
+    char* words[15];                            /* Set of all possible game words */
 
-    // char words[15];
- 
-    FILE * ifp = fopen("dictionary.txt", "r"); //open dict file
-    for (i = 0; i < 15; i++) {
-        fscanf (ifp, "%s", words[i]);
-        printf ("%s \n", words[i]);
+
+    words[0] = "georgia";
+    words[1] = "tech";
+    words[2] = "yellow";
+    words[3] = "jackets";
+    words[4] = "engineer";
+    words[5] = "white";
+    words[6] = "gold";
+    words[7] = "burdell";
+    words[8] = "sideways";
+    words[9] = "wreck";
+    words[10] = "swarm";
+    words[11] = "buzz";
+    words[12] = "dog";
+    words[13] = "thwg";
+    words[14] = "atlanta";
+
+    FILE *fp;    
+    fp = fopen("hangman_words.txt", "r");
+
+    int n_lines=0;        
+    char in[100]      
+    int size=sizeof(in);
+    while(fgets(in, size, fp)!=NULL){ 
+        if(n_lines == 15){
+            break;
+        }       
+        args[n_lines] = in;                
+        n_lines++;
     }
-    fclose(ifp); //close dict file
-
 
 
     char* loseMsg = "You Lose :(";              /* Message displayed after loss */
@@ -75,6 +83,8 @@ int main(int argc, char *argv[]) {
     char* overloadMsg = "server-overloaded";    /* Message displayed when MAXCLIENTS is reached */
     char* multiMsg = "Mode Unavailable";        /* Message displayed when multiplayer is chosen */
 
+    int i, j;                                   /* Loop counters */
+    int g;                                      /* Game selector */
 
     /* Check argument count */
     if (argc != 2) {
