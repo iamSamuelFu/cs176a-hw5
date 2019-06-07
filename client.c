@@ -118,7 +118,7 @@ int main(int argc, char* argv[]) {
                 } else if (i < wordLen + numIncorrect + 2) {
                     printf("%c, ", rcvBuf[i]);
                 } else {
-                    printf("%c", rcvBuf[i]);
+                    printf("%c\n", rcvBuf[i]);
                 }
             }
 
