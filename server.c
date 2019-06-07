@@ -55,15 +55,17 @@ int main(int argc, char *argv[]) {
     // }
     // fclose (input);
 
-    int i, wordCount;
+    int i, j;                                   /* Loop counters */
+    int g;  
+
     char words[15];
  
     FILE * ifp = fopen("dictionary.txt", "r"); //open dict file
-    for (i = 0; i < wordCount; i++) {
+    for (i = 0; i < 15; i++) {
         fscanf (ifp, "%s", words[i]);
         printf ("%s \n", words[i]);
     }
-    fclose(); //close dict file
+    fclose(ifp); //close dict file
   
 
 
