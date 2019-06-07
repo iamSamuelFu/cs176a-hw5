@@ -44,8 +44,8 @@ int main(int argc, char *argv[]) {
     int correctCount[MAXGAMES];                 /* Number of correctly guessed letters */
 
     char* words[15]; 
-    wordnum = 0;
-    input = fopen("hangman_words.txt", "r");
+    int wordnum = 0;
+    FILE * input = fopen("hangman_words.txt", "r");
     while(fscanf(input, "%s", words[wordnum]) == 1) {
         if(wordnum == 15){
             break;
@@ -53,6 +53,8 @@ int main(int argc, char *argv[]) {
         wordnum++;
         printf("%s\n", words[wordnum]);
     }
+    fclose (input);
+  
 
 
     char* loseMsg = "You Lose :(";              /* Message displayed after loss */
