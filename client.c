@@ -31,7 +31,8 @@ int main(int argc, char* argv[]) {
     char rcvBuf[RCVBUFSIZE];        /* Receive buffer */
 
     char yn;                        /* Player ready input */
-    char guess;                     /* Player guess input */
+    int guess
+    char guessbuf[256];                /* Player guess input */
     int guessValid;                 /* Validity check of player guess */
 
     int wordLen;                    /* Length of game word */
@@ -133,17 +134,19 @@ int main(int argc, char* argv[]) {
             if (!gameOver) {
                 /* Get player's guess */
                 printf("\nLetter to guess: ");
-                guess = tolower(getchar());
-                getchar();
+                bzero(guessbuf, 256);
+                fgets(guessbuf, 255, stdin);
+                guess = tolower(guessbuf[0]);
 
                 /* Check guess validity */
                 guessValid = 0;
 
                 while (!guessValid) {
-                    if (strlen(guess) > 1 || guess < 'a' || guess > 'z') {
+                    if (strlen(guessbuf) != 2 || guess < 'a' || guess > 'z') {
                         printf("\nError! Please guess one letter.\nLetter to guess: ");
-                        guess = tolower(getchar());
-                        getchar();
+                        bzero(guessbuf, 256);
+                        fgets(guessbuf, 255, stdin);
+                        guess = tolower(guessbuf[0]);
                     }
 
                     if (guess >= 'a' && guess <= 'z') {
