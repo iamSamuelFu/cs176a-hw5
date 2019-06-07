@@ -82,18 +82,15 @@ int main(int argc, char* argv[]) {
 
     /* Check if player is ready */
     do {
-        printf("Two Player? (y/n): ");
+        printf("Ready to start game? (y/n): ");
         yn = getchar();
         getchar();
-    } while (yn != 'y' && yn != 'n');
+    } while (yn != 'y');
 
     printf("\n");
 
-    if (yn == 'n') {
-        memset(sndBuf, 0x00, 1);
-    } else {
-        memset(sndBuf, 0x02, 1);
-    }
+    memset(sndBuf, 0x00, 1);
+
 
     /* Send game start packet */
     if (send(clientSock, sndBuf, SNDBUFSIZE, 0) != SNDBUFSIZE) {

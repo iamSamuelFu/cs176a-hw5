@@ -1,27 +1,17 @@
-/*///////////////////////////////////////////////////////////
-*
-* FILE:     server.c
-* AUTHOR:   Fernando Mello
-* PROJECT:  CS 3251 Project 2 - Professor Jun Xu 
-* DESCRIPTION:  Hangman Game Server
-*
-*////////////////////////////////////////////////////////////
 
-/* Included libraries */
-#include <stdio.h>          /* printf() and fprintf() */
-#include <sys/socket.h>     /* socket(), connect(), send(), and recv() */
-#include <arpa/inet.h>      /* sockaddr_in and inet_addr() */
-#include <stdlib.h>         /* all sorts of functionality */
-#include <unistd.h>         /* close() */
-#include <string.h>         /* any string ops */
-#include <time.h>           /* time-keeping for withdrawal limit */
+#include <stdio.h>          
+#include <sys/socket.h>    
+#include <arpa/inet.h>      
+#include <stdlib.h>         
+#include <unistd.h>        
+#include <string.h>         
+#include <time.h>           
 
 #define RCVBUFSIZE 2    /* Receive buffer size */
 #define SNDBUFSIZE 22   /* Send buffer size */
-#define MAXCLIENTS 6    /* Max number of simultaneously connected clients */
+#define MAXCLIENTS 3    /* Max number of simultaneously connected clients */
 #define MAXGAMES 3      /* Max number of simultaneously running games */
 
-/* The main function */
 int main(int argc, char *argv[]) {
     int serverSock;                             /* Server socket */
     int clientSock[MAXCLIENTS] = {0};           /* Client sockets */
@@ -233,44 +223,7 @@ int main(int argc, char *argv[]) {
                         gameMode[g] = 1;
                         playerID[i] = 1;
                         gameState[g] = 2;
-                    } else {                    /* Multiplayer */
-                        /* Select first idle game */
-                        for (j = 0; j < MAXGAMES; j++) {        /* Player 2 */
-                            if (gameState[j] == 1) {
-                                g = j;
-                                playerID[i] = 2;
-                                gameState[g] = 2;
-                                break;
-                            }
-                        }
-
-                        if (g == MAXGAMES) {
-                            /* Select first open game */
-                            for (j = 0; j < MAXGAMES; j++) {    /* Player 1 */
-                                if (gameState[j] == 0) {
-                                    g = j;
-                                    playerID[i] = 1;
-                                    gameState[g] = 1;
-                                    break;
-                                }
-                            }
-                        }
-
-                        /* Server overload */
-                        if (g == MAXGAMES) {
-                            if (send(sd, overBuf, SNDBUFSIZE, 0) != SNDBUFSIZE) {
-                                printf("send() failed\n");
-                                exit(1);
-                            }
-
-                            clientSock[i] = 0;
-                            close(sd);
-                            continue;
-                        }
-
-                        /* Assign game to client */
-                        gameSelect[i] = g;
-                    }
+                    } 
 
                     /* Set connection to "old" */
                     newClient[i] = 1;
