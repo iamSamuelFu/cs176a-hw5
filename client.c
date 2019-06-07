@@ -115,9 +115,6 @@ int main(int argc, char* argv[]) {
                 gameOver = 1;
             }
 
-            
-
-
             if (!gameOver) {
 
                 for (i = 3; i < wordLen + numIncorrect + 3; i++) {
@@ -145,7 +142,7 @@ int main(int argc, char* argv[]) {
                 guessValid = 0;
 
                 while (!guessValid) {
-                    if (strlen(guessbuf) != 2 || guess < 'a' || guess > 'z') {
+                    if (strlen(guessbuf) != 1 || guess < 'a' || guess > 'z') {
                         printf("\nError! Please guess one letter.\nLetter to guess: ");
                         bzero(guessbuf, 256);
                         fgets(guessbuf, 255, stdin);
