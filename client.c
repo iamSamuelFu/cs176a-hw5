@@ -178,10 +178,15 @@ int main(int argc, char* argv[]) {
         } else {    /* Message packet */
             /* Print out message */
             if (rcvBuf[0] == (21 & 0xFF) || rcvBuf[0] == (19 & 0xFF)) {
-                printf("\n\n\t%.*s\n\t%.*s\n\n", rcvBuf[0] - 10, rcvBuf + 1,
+                printf("The word was ");
+                for (i = 3; i < wordLen + 3; i++) {
+                    printf(rcvBuf[i]+" ");
+                }
+                printf("\n");
+                printf("\t%.*s\n\t%.*s", rcvBuf[0] - 10, rcvBuf + 1,
                                                     10, rcvBuf + rcvBuf[0] - 9); /* Win or loss */
             } else {
-                printf("\t%.*s\n\n", rcvBuf[0], rcvBuf + 1); /* Overload or wrong mode */
+                printf("\t%.*s", rcvBuf[0], rcvBuf + 1); /* Overload or wrong mode */
             }
 
             close(clientSock);
