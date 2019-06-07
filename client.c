@@ -115,9 +115,9 @@ int main(int argc, char* argv[]) {
                 } else if (i == wordLen + 2) {
                     printf("%c", rcvBuf[i]);
                     printf("\nIncorrect Guesses: ");
-                    if(i = wordLen + numIncorrect + 2){
-                        printf("\n", rcvBuf[i]);
-                    }
+                    // if(i = wordLen + numIncorrect + 2){
+                    //     printf("\n", rcvBuf[i]);
+                    // }
                 } else if (i < wordLen + numIncorrect + 2) {
                     printf("%c, ", rcvBuf[i]);
                 } else {
