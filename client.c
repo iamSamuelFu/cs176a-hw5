@@ -140,7 +140,7 @@ int main(int argc, char* argv[]) {
                 guessValid = 0;
 
                 while (!guessValid) {
-                    if (guess < 'a' || guess > 'z' || strlen(guess) > 1) {
+                    if (guess < 'a' || guess > 'z' || isalpha(guess) == 0) {
                         printf("\nError! Please guess one letter.\nLetter to guess: ");
                         guess = tolower(getchar());
                         getchar();
