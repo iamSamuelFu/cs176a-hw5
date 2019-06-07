@@ -39,6 +39,7 @@ int main(int argc, char* argv[]) {
     int numIncorrect;               /* Number of incorrect guesses */
 
     int gameOver = 0;               /* Game state */
+    char* result = "";
 
     int i;                          /* Loop counter */
 
@@ -104,7 +105,6 @@ int main(int argc, char* argv[]) {
             numIncorrect = rcvBuf[2];
 
             gameOver = 1;
-            char* result = "";
 
             for (i = 3; i < wordLen + 3; i++) {
                 if (rcvBuf[i] == '_') {
