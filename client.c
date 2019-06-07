@@ -72,7 +72,7 @@ int main(int argc, char* argv[]) {
         printf("connect() failed\n");
         exit(1);
     }
-    
+
     /* Check if player is ready */
     do {
         printf("Ready to start game? (y/n): ");
@@ -140,7 +140,7 @@ int main(int argc, char* argv[]) {
                 guessValid = 0;
 
                 while (!guessValid) {
-                    if (guess < 'a' || guess > 'z') {
+                    if (guess < 'a' || guess > 'z' || strlen(guess) > 1) {
                         printf("\nError! Please guess one letter.\nLetter to guess: ");
                         guess = tolower(getchar());
                         getchar();
