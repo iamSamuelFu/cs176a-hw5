@@ -133,15 +133,20 @@ int main(int argc, char* argv[]) {
                     }
                 }
                 /* Get player's guess */
-                printf("\nLetter to guess: ");
-                bzero(guessbuf, 256);
-                fgets(guessbuf, 255, stdin);
-                guess = tolower(guessbuf[0]);
+                // printf("\nLetter to guess: ");
+                // bzero(guessbuf, 256);
+                // fgets(guessbuf, 255, stdin);
+                // guess = tolower(guessbuf[0]);
 
                 /* Check guess validity */
                 guessValid = 0;
 
                 while (!guessValid) {
+                    printf("\nLetter to guess: ");
+                    bzero(guessbuf, 256);
+                    fgets(guessbuf, 255, stdin);
+                    guess = tolower(guessbuf[0]);
+
                     while(strlen(guessbuf) != 2 || guess < 'a' || guess > 'z') {
                         printf("\nError! Please guess one letter.\nLetter to guess: ");
                         bzero(guessbuf, 256);
@@ -156,9 +161,6 @@ int main(int argc, char* argv[]) {
                                 guessValid = 0;
                                 printf("\nError! Letter %c has been guessed before, please guess "
                                        "another letter.\nLetter to guess: ", guess);
-                                guess = tolower(getchar());
-                                getchar();
-                                break;
                             }
                         }
                     }
