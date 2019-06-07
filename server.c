@@ -66,13 +66,13 @@ int main(int argc, char *argv[]) {
     fp = fopen("hangman_words.txt", "r");
 
     int n_lines=0;        
-    char in[100]      
+    char in[100];
     int size=sizeof(in);
     while(fgets(in, size, fp)!=NULL){ 
         if(n_lines == 15){
             break;
         }       
-        args[n_lines] = in;                
+        words[n_lines] = in;                
         n_lines++;
     }
 
