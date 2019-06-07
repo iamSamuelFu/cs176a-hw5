@@ -43,7 +43,8 @@ int main(int argc, char *argv[]) {
     int correctCheck[MAXGAMES];                 /* Check if guess is in game word */
     int correctCount[MAXGAMES];                 /* Number of correctly guessed letters */
 
-    // char* words[15]; 
+    
+    char* words[15]; 
     // int wordnum = 0;
     // FILE * input = fopen("hangman_words.txt", "r");
     // while(fscanf(input, "%s", words[wordnum]) == 1) {
@@ -55,10 +56,7 @@ int main(int argc, char *argv[]) {
     // }
     // fclose (input);
 
-    int i, j;                                   /* Loop counters */
-    int g;  
-
-    char words[15];
+    // char words[15];
  
     FILE * ifp = fopen("dictionary.txt", "r"); //open dict file
     for (i = 0; i < 15; i++) {
@@ -66,7 +64,7 @@ int main(int argc, char *argv[]) {
         printf ("%s \n", words[i]);
     }
     fclose(ifp); //close dict file
-  
+
 
 
     char* loseMsg = "You Lose :(";              /* Message displayed after loss */
@@ -75,6 +73,8 @@ int main(int argc, char *argv[]) {
     char* overloadMsg = "server-overloaded";    /* Message displayed when MAXCLIENTS is reached */
     char* multiMsg = "Mode Unavailable";        /* Message displayed when multiplayer is chosen */
 
+    int i, j;                                   /* Loop counters */
+    int g;                                      /* Game selector */
 
     /* Check argument count */
     if (argc != 2) {
