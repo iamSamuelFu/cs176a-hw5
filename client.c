@@ -72,14 +72,7 @@ int main(int argc, char* argv[]) {
         printf("connect() failed\n");
         exit(1);
     }
-
-    printf("\n _   _\n"
-             "| | | |   __ _   _ __     __ _   _ __ ___     __ _   _ __ \n"
-             "| |_| |  / _` | | '_ \\   / _` | | '_ ` _ \\   / _` | | '_ \\  \n"
-             "|  _  | | (_| | | | | | | (_| | | | | | | | | (_| | | | | |\n"
-             "|_| |_|  \\__,_| |_| |_|  \\__, | |_| |_| |_|  \\__,_| |_| |_|\n"
-             "                         |___/\n\n\n");
-
+    
     /* Check if player is ready */
     do {
         printf("Ready to start game? (y/n): ");

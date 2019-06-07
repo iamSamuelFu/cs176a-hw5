@@ -43,22 +43,17 @@ int main(int argc, char *argv[]) {
     int correctCheck[MAXGAMES];                 /* Check if guess is in game word */
     int correctCount[MAXGAMES];                 /* Number of correctly guessed letters */
 
-    char* words[15];                            /* Set of all possible game words */
-    words[0] = "georgia";
-    words[1] = "tech";
-    words[2] = "yellow";
-    words[3] = "jackets";
-    words[4] = "engineer";
-    words[5] = "white";
-    words[6] = "gold";
-    words[7] = "burdell";
-    words[8] = "sideways";
-    words[9] = "wreck";
-    words[10] = "swarm";
-    words[11] = "buzz";
-    words[12] = "rat";
-    words[13] = "thwg";
-    words[14] = "atlanta";
+    char* words[15]; 
+    wordnum = 0;
+    input = fopen("hangman_words.txt", "r");
+    while(fscanf(input, "%s", words[wordnum]) == 1) {
+        if(wordnum == 15){
+            break;
+        }
+        wordnum++;
+        printf("%s\n", words[wordnum]);
+    }
+
 
     char* loseMsg = "You Lose :(";              /* Message displayed after loss */
     char* winMsg = "You Win!";                  /* Message displayed after win */
@@ -195,7 +190,7 @@ int main(int argc, char *argv[]) {
                         exit(1);
                     }
 
-                    if (rcvBuf[0] == 0x00) {    /* Single Player */
+                    if (rcvBuf[0] == 0x00) {   
                         if (g == MAXGAMES) {
                             /* Select first open game */
                             for (j = 0; j < MAXGAMES; j++) {
