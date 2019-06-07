@@ -104,11 +104,14 @@ int main(int argc, char* argv[]) {
             numIncorrect = rcvBuf[2];
 
             gameOver = 1;
+            char* result = "";
 
             for (i = 3; i < wordLen + 3; i++) {
                 if (rcvBuf[i] == '_') {
                     gameOver = 0;
+                    break;
                 }
+                result +=  rcvBuf[i];
             }
 
             if (numIncorrect == 6) {
@@ -181,7 +184,7 @@ int main(int argc, char* argv[]) {
             /* Print out message */
             if (rcvBuf[0] == (21 & 0xFF) || rcvBuf[0] == (19 & 0xFF)) {
                 printf("The word was ");
-                for (i = 3; i < wordLen + 3; i++) {
+                for (i = 0; i < strlen(result); i++) {
                     printf(rcvBuf[i]+" ");
                 }
                 printf("\n");
