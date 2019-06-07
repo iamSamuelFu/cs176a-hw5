@@ -43,17 +43,27 @@ int main(int argc, char *argv[]) {
     int correctCheck[MAXGAMES];                 /* Check if guess is in game word */
     int correctCount[MAXGAMES];                 /* Number of correctly guessed letters */
 
-    char* words[15]; 
-    int wordnum = 0;
-    FILE * input = fopen("hangman_words.txt", "r");
-    while(fscanf(input, "%s", words[wordnum]) == 1) {
-        if(wordnum == 15){
-            break;
-        }
-        wordnum++;
-        printf("%s\n", words[wordnum]);
+    // char* words[15]; 
+    // int wordnum = 0;
+    // FILE * input = fopen("hangman_words.txt", "r");
+    // while(fscanf(input, "%s", words[wordnum]) == 1) {
+    //     if(wordnum == 15){
+    //         break;
+    //     }
+    //     wordnum++;
+    //     printf("%s\n", words[wordnum]);
+    // }
+    // fclose (input);
+
+    int i, wordCount;
+    char words[15];
+ 
+    FILE * ifp = fopen("dictionary.txt", "r"); //open dict file
+    for (i = 0; i < wordCount; i++) {
+        fscanf (ifp, "%s", words[i]);
+        printf ("%s \n", words[i]);
     }
-    fclose (input);
+    fclose(); //close dict file
   
 
 
