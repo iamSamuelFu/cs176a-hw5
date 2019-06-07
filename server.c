@@ -46,21 +46,21 @@ int main(int argc, char *argv[]) {
     char* words[15];                            /* Set of all possible game words */
 
 
-    words[0] = "georgia";
-    words[1] = "tech";
-    words[2] = "yellow";
-    words[3] = "jackets";
-    words[4] = "engineer";
-    words[5] = "white";
-    words[6] = "gold";
-    words[7] = "burdell";
-    words[8] = "sideways";
-    words[9] = "wreck";
-    words[10] = "swarm";
-    words[11] = "buzz";
-    words[12] = "dog";
-    words[13] = "thwg";
-    words[14] = "atlanta";
+    // words[0] = "georgia";
+    // words[1] = "tech";
+    // words[2] = "yellow";
+    // words[3] = "jackets";
+    // words[4] = "engineer";
+    // words[5] = "white";
+    // words[6] = "gold";
+    // words[7] = "burdell";
+    // words[8] = "sideways";
+    // words[9] = "wreck";
+    // words[10] = "swarm";
+    // words[11] = "buzz";
+    // words[12] = "dog";
+    // words[13] = "thwg";
+    // words[14] = "atlanta";
 
     FILE *fp;    
     fp = fopen("hangman_words.txt", "r");
