@@ -31,7 +31,7 @@ int main(int argc, char* argv[]) {
     char rcvBuf[RCVBUFSIZE];        /* Receive buffer */
 
     char yn;                        /* Player ready input */
-    int guess
+    int guess;
     char guessbuf[256];                /* Player guess input */
     int guessValid;                 /* Validity check of player guess */
 
