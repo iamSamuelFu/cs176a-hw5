@@ -103,22 +103,6 @@ int main(int argc, char* argv[]) {
             wordLen = rcvBuf[1];
             numIncorrect = rcvBuf[2];
 
-            for (i = 3; i < wordLen + numIncorrect + 3; i++) {
-                if (i < wordLen + 2) {
-                    printf("%c ", rcvBuf[i]);
-                } else if (i == wordLen + 2) {
-                    printf("%c", rcvBuf[i]);
-                    printf("\nIncorrect Guesses: ");
-                } else if (i < wordLen + numIncorrect + 2) {
-                    printf("%c, ", rcvBuf[i]);
-                } else {
-                    printf("%c", rcvBuf[i]);
-                }
-                if(i == wordLen + numIncorrect + 2){
-                    printf("\n");
-                }
-            }
-
             gameOver = 1;
 
             for (i = 3; i < wordLen + 3; i++) {
@@ -131,7 +115,26 @@ int main(int argc, char* argv[]) {
                 gameOver = 1;
             }
 
+            
+
+
             if (!gameOver) {
+
+                for (i = 3; i < wordLen + numIncorrect + 3; i++) {
+                    if (i < wordLen + 2) {
+                        printf("%c ", rcvBuf[i]);
+                    } else if (i == wordLen + 2) {
+                        printf("%c", rcvBuf[i]);
+                        printf("\nIncorrect Guesses: ");
+                    } else if (i < wordLen + numIncorrect + 2) {
+                        printf("%c, ", rcvBuf[i]);
+                    } else {
+                        printf("%c", rcvBuf[i]);
+                    }
+                    if(i == wordLen + numIncorrect + 2){
+                        printf("\n");
+                    }
+                }
                 /* Get player's guess */
                 printf("\nLetter to guess: ");
                 bzero(guessbuf, 256);
