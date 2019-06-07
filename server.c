@@ -75,8 +75,6 @@ int main(int argc, char *argv[]) {
     char* overloadMsg = "server-overloaded";    /* Message displayed when MAXCLIENTS is reached */
     char* multiMsg = "Mode Unavailable";        /* Message displayed when multiplayer is chosen */
 
-    int i, j;                                   /* Loop counters */
-    int g;                                      /* Game selector */
 
     /* Check argument count */
     if (argc != 2) {
