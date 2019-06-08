@@ -116,7 +116,7 @@ int main( int argc, char **argv )
             int incorr = buffer[2] - '0';
             for(int i = len+3; i<incorr+len+3; i++){
               if(inputs2[1] == buffer[i]){
-                print("Error! Letter %c has been guessed before, please guess another letter.", inputs2[1]);
+                printf("Error! Letter %c has been guessed before, please guess another letter.", inputs2[1]);
                 break;
               }
             }
