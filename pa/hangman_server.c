@@ -61,7 +61,7 @@ int main( int argc, char **argv )
       exit(1);
     }
     
-    printf("%d\n",numOfChild);
+    // printf("%d\n",numOfChild);
 
     if(numOfChild < 3){
       if (0 != pthread_create(&threads[numOfChild], NULL, doprocessing , (void*) &new_socket)){
@@ -104,9 +104,9 @@ void *doprocessing(void *socket_desc){
   //     n_lines++;
   // }
 
-  // for(int x = 0; x<15; x++){
-  //   printf("%s\n",words[x] );
-  // }
+  for(int x = 0; x<15; x++){
+    printf("%s\n",words[x] );
+  }
 
   srand(time(NULL));
   char word[8];
