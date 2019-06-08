@@ -13,7 +13,7 @@
 void *doprocessing(void *);
 int numOfChild = 0;
 pthread_t threads[3];
-char words[15][8];
+char words[15][9];
 
 int main( int argc, char **argv )
 {
