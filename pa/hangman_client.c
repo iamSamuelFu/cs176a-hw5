@@ -112,16 +112,14 @@ int main( int argc, char **argv )
                 }
             }
             inputs2[0] = (--size2)+'0';
-            int len = buffer[1]-'0';
-            int incorr = buffer[2] - '0';
             for(int i = len+3; i<incorr+len+3; i++){
               if(inputs2[1] == buffer[i]){
-                printf("Error! Letter %c has been guessed before, please guess another letter.", inputs2[1]);
+                print("Error! Letter %c has been guessed before, please guess another letter.", inputs2[1]);
                 break;
               }
-              send(fd, inputs2, sizeof(inputs2), 0);
             }
-    
+
+            send(fd, inputs2, sizeof(inputs2), 0);
         }
         if(isEnd) break;
     }    
