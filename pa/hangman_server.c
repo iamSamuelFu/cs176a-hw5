@@ -104,9 +104,9 @@ void *doprocessing(void *socket_desc){
   //     n_lines++;
   // }
 
-  for(int x = 0; x<15; x++){
-    printf("%s\n",words[x] );
-  }
+  // for(int x = 0; x<15; x++){
+  //   printf("%s\n",words[x] );
+  // }
 
   srand(time(NULL));
   char word[8];
