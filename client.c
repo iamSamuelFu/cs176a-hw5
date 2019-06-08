@@ -111,7 +111,6 @@ int main(int argc, char* argv[]) {
                     gameOver = 0;
                     break;
                 }
-                result +=  rcvBuf[i];
             }
 
             if (numIncorrect == 6) {
