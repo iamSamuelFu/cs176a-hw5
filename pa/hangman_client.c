@@ -99,9 +99,9 @@ int main( int argc, char **argv )
               needInput = 0;
             }
         }
+        char inputs2[128];
         while(needInput){
             printf("\n%s","Letter to guess: ");
-            char inputs2[128];
             int size2 = 1;
             while(1){
                 char chr2;
