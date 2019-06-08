@@ -104,13 +104,11 @@ void *doprocessing(void *socket_desc){
   //     words[n_lines] = in;                
   //     n_lines++;
   // }
-  char buf[8];
   FILE *fp = fopen("hangman_words.txt","r");
   for(int i = 0; i< 14; i++){
-    fscanf(fp, "%s", buf);
-    words[i] == buf;
-
+    fscanf(fp, "%s", words[i]);
   }
+  fclose(fp);
 
 
   for(int x = 0; x<15; x++){
