@@ -105,10 +105,10 @@ void *doprocessing(void *socket_desc){
   // }
   char words[15][8];
   char buf[8];
-  FILE *fp = fopen("hangman_words.txt","r")
+  FILE *fp = fopen("hangman_words.txt","r");
   for(int i = 0; i< 14; i++){
     fscanf(fp, "%s", buf);
-    words[i] = buf
+    words[i] = buf;
 
   }
 
