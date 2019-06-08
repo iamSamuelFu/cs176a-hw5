@@ -115,6 +115,9 @@ int main( int argc, char **argv )
 
             printf("%s\n", inputs2[0] );
             printf("%s\n", inputs2[1] );
+            printf("%s\n", inputs2[2] );
+            printf("%s\n", inputs2[3] );
+
 
             send(fd, inputs2, sizeof(inputs2), 0);
         }
