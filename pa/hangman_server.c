@@ -13,7 +13,6 @@
 void *doprocessing(void *);
 int numOfChild = 0;
 pthread_t threads[3];
-char words[15][9];
 
 int main( int argc, char **argv )
 {
@@ -89,14 +88,20 @@ void *doprocessing(void *socket_desc){
   char buffer[128];
   
   //char* words[15] = {"cat", "dog", "hangman", "book", "potato", "tomato", "ham", "food", "chicken", "beef", "pork", "cake", "water", "melon", "drink"};
-  FILE *fp = fopen("hangman_words.txt","r");
-  for(int i = 0; i< 14; i++){
-    fscanf(fp, "%s", words[i]);
-  }
-  fclose(fp);
+  
+  char* words[15];
+  FILE *fp;    
+  fp = fopen("hangman_words.txt", "r");
 
-  for(int x = 0; x<15; x++){
-    printf("%s\n",words[x] );
+  int n_lines=0;
+  char in[100];
+  int size=sizeof(in);
+  while(fgets(in, size, fp)!=NULL){ 
+      if(n_lines == 15){
+          break;
+      }       
+      words[n_lines] = in;                
+      n_lines++;
   }
 
   srand(time(NULL));
@@ -155,46 +160,46 @@ void *doprocessing(void *socket_desc){
 	if(output[i] == '_') isWin = 0;	
       }
 
-    if(isWin || errNum >= 6){
-		int number = 13 + wordlength*2;
-		output2[0] = number + '0';
-		char message4[13] = "The word was ";
-		for( int i = 1; i < 14; i++){
-		  output2[i] = message4[i-1];
-		}
-		for( int i = 14; i < (14 + wordlength*2) ; i++){
-		  output2[i] = word[(i-14)/2];
-		  output2[i+1] =' ';
-		  i++;
-		}
-		send(new_socket, output2, sizeof(output2) ,0);
+      if(isWin || errNum >= 6){
+	int number = 13 + wordlength*2;
+	output2[0] = number + '0';
+	char message4[13] = "The word was ";
+	for( int i = 1; i < 14; i++){
+	  output2[i] = message4[i-1];
+	}
+	for( int i = 14; i < (14 + wordlength*2) ; i++){
+	  output2[i] = word[(i-14)/2];
+	  output2[i+1] =' ';
+	  i++;
+	}
+	send(new_socket, output2, sizeof(output2) ,0);
 
-		if(errNum >=6){
-		  int number10 = 10;
-		  output2[0] = number10 + '0';
-		  char message5[10] = "You Lose.";
-		  for(int i = 1; i<11;i++){
-		    output2[i] = message5[i-1];
-		  }
-		}
-		  
-		if(isWin){
-		  char message2[9]  = "8You Win!";
-		  for(int i = 0; i<9;i++){
-		    output2[i] = message2[i];
-		  }
-		}
-		send(new_socket, output2, sizeof(output2) ,0);
-		int number10 = 10;
-		output2[0] = number10 + '0';
-		char message3[10] = "Game Over!";
-		for( int i = 1; i < 11; i++){
-		  output2[i] = message3[i-1];
-		}
-		send(new_socket, output2, sizeof(output2) ,0);
-		break;
+	if(errNum >=6){
+	  int number10 = 10;
+	  output2[0] = number10 + '0';
+	  char message5[10] = "You Lose.";
+	  for(int i = 1; i<11;i++){
+	    output2[i] = message5[i-1];
+	  }
+	}
+	  
+	if(isWin){
+	  char message2[9]  = "8You Win!";
+	  for(int i = 0; i<9;i++){
+	    output2[i] = message2[i];
+	  }
+	}
+	send(new_socket, output2, sizeof(output2) ,0);
+	int number10 = 10;
+	output2[0] = number10 + '0';
+	char message3[10] = "Game Over!";
+	for( int i = 1; i < 11; i++){
+	  output2[i] = message3[i-1];
+	}
+	send(new_socket, output2, sizeof(output2) ,0);
+	break;
       }else{
-		send(new_socket, output, sizeof(output),0);
+	send(new_socket, output, sizeof(output),0);
       }
     }
   }

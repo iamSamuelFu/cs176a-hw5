@@ -34,7 +34,7 @@ int main( int argc, char **argv )
   serveraddr.sin_family = AF_INET;
   serveraddr.sin_port = htons( portNum );              
   bcopy((char *)server->h_addr, 
-	  (char *)&serveraddr.sin_addr.s_addr, server->h_length);
+      (char *)&serveraddr.sin_addr.s_addr, server->h_length);
 
   if (connect(fd, (struct sockaddr *)&serveraddr, sizeof(serveraddr)) < 0){
     printf("\nConnection Failed \n");
@@ -51,7 +51,7 @@ int main( int argc, char **argv )
     printf("\n");
     close(fd);
   }else if (serverStateData[1] == 'a'){
-  	printf("%s","Ready to start game?(y/n): ");
+    printf("%s","Ready to start game?(y/n): ");
     char inputs[128];
     int size = 0;
     while(1){
@@ -59,7 +59,7 @@ int main( int argc, char **argv )
       scanf("%c",&chr);
       if(chr=='\n') break;
       else{
-	inputs[size++] = chr;
+    inputs[size++] = chr;
       }
     }
     if(inputs[0] == 'y'| inputs[0] =='Y') ;
@@ -69,52 +69,55 @@ int main( int argc, char **argv )
     send( fd, startMessage, sizeof(startMessage), 0);
 
     while(1){
-      char buffer[128];
-      read(fd, buffer, sizeof(buffer));
-      int isEnd = 0;
-      int needInput = 1;
-      if (buffer[0] == '0') {
-	int len = buffer[1]-'0';
-	int incorr = buffer[2] - '0';
-	for(int i = 3; i<len+3; i++){
-	  printf("%c ", buffer[i]);
-	}
-	printf("\n%s", "Incorrect Guesses: ");
-	for(int i = len+3; i<incorr+len+3; i++){
-	  printf("%c ", buffer[i]);
-	}
-	printf("\n");
-      }else {
-	int len = buffer[0] -'0';
-	for(int i = 1; i < len + 1 ; i++){
-	  printf("%c", buffer[i]);
-	}
-	printf("\n");
-	if(buffer[1] == 'G'){
-	  needInput = 0;
-	  isEnd = 1;
-	}else if(buffer[1] == 'T'){
-	  needInput = 0;
-	}else if(buffer[1] == 'Y'){
-	  needInput = 0;
-	}
-      }
-      if(needInput){
-	printf("\n%s","Letter to guess: ");
-	char inputs2[128];
-	int size2 = 1;
-	while(1){
-	  char chr2;
-	  scanf("%c",&chr2);
-	  if(chr2=='\n') break;
-	  else{
-	    inputs2[size2++] = tolower(chr2);
-	  }
-	}
-	inputs2[0] = (--size2)+'0';
-	send(fd, inputs2, sizeof(inputs2), 0);
-      }
-      if(isEnd) break;
+        char buffer[128];
+        read(fd, buffer, sizeof(buffer));
+        int isEnd = 0;
+        int needInput = 1;
+        if (buffer[0] == '0') {
+            int len = buffer[1]-'0';
+            int incorr = buffer[2] - '0';
+            for(int i = 3; i<len+3; i++){
+              printf("%c ", buffer[i]);
+            }
+            printf("\n%s", "Incorrect Guesses: ");
+            for(int i = len+3; i<incorr+len+3; i++){
+              printf("%c ", buffer[i]);
+            }
+            printf("\n");
+        }else {
+            int len = buffer[0] -'0';
+            for(int i = 1; i < len + 1 ; i++){
+              printf("%c", buffer[i]);
+            }
+            printf("\n");
+            if(buffer[1] == 'G'){
+              needInput = 0;
+              isEnd = 1;
+            }else if(buffer[1] == 'T'){
+              needInput = 0;
+            }else if(buffer[1] == 'Y'){
+              needInput = 0;
+            }
+        }
+        if(needInput){
+            printf("\n%s","Letter to guess: ");
+            char inputs2[128];
+            int size2 = 1;
+            while(1){
+                char chr2;
+                scanf("%c",&chr2);
+                if(chr2=='\n') break;
+                else{
+                    inputs2[size2++] = tolower(chr2);
+                }
+            }
+            inputs2[0] = (--size2)+'0';
+
+            printf("%s\n", inputs2 );
+
+            send(fd, inputs2, sizeof(inputs2), 0);
+        }
+        if(isEnd) break;
     }    
 
     close( fd );
