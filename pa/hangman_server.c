@@ -13,6 +13,7 @@
 void *doprocessing(void *);
 int numOfChild = 0;
 pthread_t threads[3];
+char words[15][8];
 
 int main( int argc, char **argv )
 {
@@ -103,12 +104,11 @@ void *doprocessing(void *socket_desc){
   //     words[n_lines] = in;                
   //     n_lines++;
   // }
-  char words[15][8];
   char buf[8];
   FILE *fp = fopen("hangman_words.txt","r");
   for(int i = 0; i< 14; i++){
     fscanf(fp, "%s", buf);
-    words[i] = buf;
+    words[i] == buf;
 
   }
 
