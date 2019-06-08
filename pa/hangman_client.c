@@ -113,7 +113,8 @@ int main( int argc, char **argv )
             }
             inputs2[0] = (--size2)+'0';
 
-            printf("%s\n", inputs2 );
+            printf("%s\n", inputs2[0] );
+            printf("%s\n", inputs2[1] );
 
             send(fd, inputs2, sizeof(inputs2), 0);
         }
